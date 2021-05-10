@@ -25,7 +25,8 @@ defmodule ElixirPrimo.Primo do
 
     quantidade_divisivel =
       1..raiz_numero
-      |> Enum.map(&is_divisivel(numero, &1))
+      |> Enum.map(fn num -> Task.async(is_divisivel(numero, num)) end)
+      |> Enum.map(&Task.await(&1))
       |> Enum.filter(& &1)
       |> Enum.count()
 

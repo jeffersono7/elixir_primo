@@ -1,8 +1,5 @@
 defmodule ElixirPrimoTest do
-  use ExUnit.Case
-  doctest ElixirPrimo
+  use ExUnit.Case, async: true
 
-  test "greets the world" do
-    assert ElixirPrimo.hello() == :world
-  end
+
 end

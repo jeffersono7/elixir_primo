@@ -1,6 +1,6 @@
 defmodule ElixirPrimo.Divisor do
 
   def is_divisivel(x, y) do
-    true
+    rem(x, y) == 0
   end
 end
