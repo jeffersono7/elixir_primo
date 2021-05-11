@@ -5,15 +5,14 @@ defmodule ElixirPrimo.Primo do
     spawn_link(&calcular_numero/0)
   end
 
-  defp calcular_numero(cache \\ %{}) do
+  defp calcular_numero do
     receive do
       {source, numero} ->
         result = is_primo(numero)
 
         send(source, {numero, result})
 
-        Map.put_new(cache, numero, result)
-        |> calcular_numero()
+        calcular_numero()
     end
   end
 
